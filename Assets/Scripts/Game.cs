@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    [SerializeField] private Worm _worm;
+    [SerializeField] private Player _player;
 
     private void OnEnable()
     {
-        _worm.GameOver += OnGameOver;
+        _player.GameOver += OnGameOver;
     }
 
     private void OnDisable()
     {
-        _worm.GameOver -= OnGameOver;
+        _player.GameOver -= OnGameOver;
 
     }
 
@@ -35,7 +35,7 @@ public class Game : MonoBehaviour
     private void StartGame()
     {
         Time.timeScale = 1;
-        _worm.ResetPlayer();
+        _player.ResetPlayer();
     }
 
     public void OnGameOver()

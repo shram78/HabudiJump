@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(WormMover))]
+[RequireComponent(typeof(PlayerMover))]
 
-public class Worm : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    private WormMover _mover;
+    private PlayerMover _mover;
     private int _score;
 
     public event UnityAction GameOver;
@@ -15,7 +15,7 @@ public class Worm : MonoBehaviour
 
     private void Start()
     {
-        _mover = GetComponent<WormMover>();
+        _mover = GetComponent<PlayerMover>();
     }
     public  void IncreaseScore()
     {
@@ -27,7 +27,7 @@ public class Worm : MonoBehaviour
     {
         _score = 0;
         ScoreChanged?.Invoke(_score);
-        _mover.ResetWorm();
+        _mover.ResetPlayer();
     }
 
     public void Die()

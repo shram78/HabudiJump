@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private Worm _bird;
+    [SerializeField] private Player _bird;
     [SerializeField] private TMP_Text _score;
 
     private void OnEnable()
