@@ -14,7 +14,6 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
 
-    private Vector3 _finishPosition;
     private Rigidbody2D _rigidbody2D;
     private bool _isGrounded;
 
