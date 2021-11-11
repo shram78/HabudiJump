@@ -8,25 +8,33 @@ public class Spawner : ObjectsPool
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private int _minDdistanceBetweenObstacles;
     [SerializeField] private int _maxDistanceBetweenObstacles;
+    [SerializeField] GameObject lastPlatform1;
+
+    private float _obstaclePreviousWidth;
+    private float _obstacleWidth;
+
 
     private int _distanceBetweenObstacles;
 
     private void Start()
     {
-        Initialize(_obstaclePrefab); 
+        Initialize(_obstaclePrefab);
     }
 
     private void Update()
     {
-        _distanceBetweenObstacles = Random.Range(_minDdistanceBetweenObstacles, _maxDistanceBetweenObstacles);
-
         if (transform.position.x < _spawnPoint.position.x)
         {
             if (TryGetObject(out GameObject obstacles))
             {
-                transform.position = new Vector3(transform.position.x + _distanceBetweenObstacles, transform.position.y, transform.position.z);
+                _obstaclePreviousWidth = lastPlatform1.transform.localScale.x; 
+                _obstacleWidth = obstacles.transform.localScale.x; 
 
-                SetObstacle(obstacles, transform.position);
+                transform.position = new Vector3(transform.position.x + (_obstaclePreviousWidth/2 + _obstacleWidth/2) +1, transform.position.y, transform.position.z);
+
+                 SetObstacle(obstacles, transform.position);
+
+                lastPlatform1 = obstacles;
             }
         }
     }
