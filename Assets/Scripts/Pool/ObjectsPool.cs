@@ -10,14 +10,14 @@ public class ObjectsPool : MonoBehaviour
 
     private List<GameObject> _pool = new List<GameObject>();
 
-    protected void Initialize(GameObject[] prefab)
+    protected void Initialize(GameObject[] Prefab)
     {
         int randonmPrefab;
 
         for (int i = 0; i < _capacity; i++)
         {
-            randonmPrefab = Random.Range(0, prefab.Length);
-            GameObject spawned = Instantiate(prefab[randonmPrefab], _container.transform);
+            randonmPrefab = Random.Range(0, Prefab.Length);
+            GameObject spawned = Instantiate(Prefab[randonmPrefab], _container.transform);
             spawned.SetActive(false);
             _pool.Add(spawned);
         }

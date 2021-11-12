@@ -5,16 +5,15 @@ using UnityEngine;
 public class Spawner : ObjectsPool
 {
     [SerializeField] private GameObject[] _obstaclePrefab;
+    [SerializeField] private GameObject _previousObstacle;
     [SerializeField] private Transform _spawnPoint;
-    [SerializeField] private int _minDdistanceBetweenObstacles;
-    [SerializeField] private int _maxDistanceBetweenObstacles;
-    [SerializeField] GameObject lastPlatform1;
 
-    private float _obstaclePreviousWidth;
-    private float _obstacleWidth;
-
-
+    private int _minDdistanceBetweenObstacles = 1;
+    private int _maxDistanceBetweenObstacles = 4;
     private int _distanceBetweenObstacles;
+
+    private float _previousObstacleWidth;
+    private float _currentObstacleWidth;
 
     private void Start()
     {
@@ -27,19 +26,25 @@ public class Spawner : ObjectsPool
         {
             if (TryGetObject(out GameObject obstacles))
             {
-                _obstaclePreviousWidth = lastPlatform1.transform.localScale.x; 
-                _obstacleWidth = obstacles.transform.localScale.x; 
+                GetSizeObstacles(obstacles);
 
-                transform.position = new Vector3(transform.position.x + (_obstaclePreviousWidth/2 + _obstacleWidth/2) +1, transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x + (_previousObstacleWidth / 2 + _currentObstacleWidth / 2) + _distanceBetweenObstacles, transform.position.y, transform.position.z);
 
-                 SetObstacle(obstacles, transform.position);
+                SetObstacle(obstacles, transform.position);
 
-                lastPlatform1 = obstacles;
+                _previousObstacle = obstacles;
             }
         }
     }
 
-    private void SetObstacle(GameObject obstacle, Vector3 spawnPoint) 
+    private void GetSizeObstacles(GameObject obstacles)
+    {
+        _previousObstacleWidth = _previousObstacle.transform.localScale.x;
+        _currentObstacleWidth = obstacles.transform.localScale.x;
+        _distanceBetweenObstacles = Random.Range(_minDdistanceBetweenObstacles, _maxDistanceBetweenObstacles);
+    }
+
+    private void SetObstacle(GameObject obstacle, Vector3 spawnPoint)
     {
         obstacle.SetActive(true);
         obstacle.transform.position = spawnPoint;
