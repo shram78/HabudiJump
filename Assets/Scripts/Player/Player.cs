@@ -1,4 +1,4 @@
-п»їusing System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,12 +7,12 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private List<ItemInStore> _itemsInStore; // СЂРµРЅР°Р№Рј РєРѕРіРґР° РїСЂРёРґСѓРјР°РµС€СЊ С‡С‚Рѕ РїСЂРѕРґР°РµС‚СЃСЏ РІ РјР°РіР°Р·Рµ
+    [SerializeField] private List<ItemInStore> _itemsInStore; // ренайм когда придумаешь что продается в магазе
 
     private ItemInStore _currentItem;//
 
     private PlayerMover _mover;
-   // private int _score;
+    // private int _score;
 
     public int Score { get; private set; }
 
@@ -22,22 +22,23 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _mover = GetComponent<PlayerMover>();
-        // _currentItem = _itemsInStore[0]; // Р’ Р±СѓРґСѓС‰РµРј Р±СѓРґРµС‚ Сѓ РЅР°СЃ РїРѕ РґСЂСѓРіРѕРјСѓ, РїРѕРєР° РїРёС€Сѓ РјР°РіР°Р·РёРЅ РїСѓСЃС‚СЊ С‚Р°Рє
-        // СЌРєСЃРµРїС€РЅ РїРѕРєР°
+        // _currentItem = _itemsInStore[0]; // В будущем будет у нас по другому, пока пишу магазин пусть так
+        // эксепшн пока
     }
-    
 
-    //public void ResetPlayer()
-    //{
-    //    _score = 0;
-    //    ScoreChanged?.Invoke(_score);
-    //    _mover.ResetPlayer();
-    //}
 
-    //public void Die()
-    //{
-    //    GameOver?.Invoke();
-    //}
+    public void ResetPlayer()
+    {
+        Score = 0;
+        ScoreChanged?.Invoke(Score);
+        _mover.ResetPlayer();
+    }
+
+    public void Die()
+    {
+        GameOver?.Invoke();
+        Debug.Log("Я убился");
+    }
 
 
     public void AddScore(int score)

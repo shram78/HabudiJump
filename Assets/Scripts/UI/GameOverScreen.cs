@@ -24,5 +24,3 @@ public class GameOverScreen : Screen
         RestartButtonClick?.Invoke();
     }
 }
-
-// not used now

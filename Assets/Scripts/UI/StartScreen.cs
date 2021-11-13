@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class StartScreen : Screen
 {
-
     public event UnityAction PlayButtonClick;
 
     public override void Close()
@@ -25,4 +24,3 @@ public class StartScreen : Screen
         PlayButtonClick?.Invoke();
     }
 }
-// not used now

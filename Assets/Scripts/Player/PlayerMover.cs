@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -69,6 +69,6 @@ public class PlayerMover : MonoBehaviour
         _traveledDistance = (int)transform.position.x;
 
         _player.AddScore(_traveledDistance);
-       // Debug.Log(_traveledDistance);
+        // Debug.Log(_traveledDistance);
     }
 }
