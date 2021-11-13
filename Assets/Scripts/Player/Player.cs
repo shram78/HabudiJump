@@ -7,8 +7,14 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private List<ItemInStore> _itemsInStore; // ренайм когда придумаешь что продается в магазе
+
+    private ItemInStore _currentItem;//
+
     private PlayerMover _mover;
-    private int _score;
+   // private int _score;
+
+    public int Score { get; private set; }
 
     public event UnityAction GameOver;
     public event UnityAction<int> ScoreChanged;
@@ -16,22 +22,35 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _mover = GetComponent<PlayerMover>();
+        // _currentItem = _itemsInStore[0]; // В будущем будет у нас по другому, пока пишу магазин пусть так
+        // эксепшн пока
     }
-    public  void IncreaseScore()
+    
+
+    //public void ResetPlayer()
+    //{
+    //    _score = 0;
+    //    ScoreChanged?.Invoke(_score);
+    //    _mover.ResetPlayer();
+    //}
+
+    //public void Die()
+    //{
+    //    GameOver?.Invoke();
+    //}
+
+
+    public void AddScore(int score)
     {
-        _score++;
-        ScoreChanged?.Invoke(_score);
+        Score = score;
+
+        ScoreChanged?.Invoke(Score);
     }
 
-    public void ResetPlayer()
+    public void BuyItemInStore(ItemInStore itemInStore)
     {
-        _score = 0;
-        ScoreChanged?.Invoke(_score);
-        _mover.ResetPlayer();
-    }
-
-    public void Die()
-    {
-        GameOver?.Invoke();
+        Score -= itemInStore.Price;
+        ScoreChanged?.Invoke(Score);
+        _itemsInStore.Add(itemInStore);
     }
 }

@@ -24,3 +24,4 @@ public abstract class Screen : MonoBehaviour
 
     public abstract void Close();
 }
+// not used now

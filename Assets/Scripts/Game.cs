@@ -22,24 +22,25 @@ public class Game : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    private void OnPlayButtonClick()
-    {
-        StartGame();
-    }
+    //private void OnPlayButtonClick()
+    //{
+    //    StartGame();
+    //}
 
-    private void OnRestartButtonClick()
-    {
-        StartGame();
-    }
+    //private void OnRestartButtonClick()
+    //{
+    //    StartGame();
+    //}
 
-    private void StartGame()
-    {
-        Time.timeScale = 1;
-        _player.ResetPlayer();
-    }
+    //private void StartGame()
+    //{
+    //    Time.timeScale = 1;
+    //    _player.ResetPlayer();
+    //}
 
     public void OnGameOver()
     {
         Time.timeScale = 0;
     }
 }
+// not used now
