@@ -21,13 +21,10 @@ public class PlayerMover : MonoBehaviour
     private int _traveledDistance;
     private Player _player;
 
-
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _player = GetComponent<Player>();
-
-        ResetPlayer();
     }
 
     private void Update()
@@ -67,8 +64,6 @@ public class PlayerMover : MonoBehaviour
     private void AddScoreForDistanse()
     {
         _traveledDistance = (int)transform.position.x;
-
         _player.AddScore(_traveledDistance);
-        // Debug.Log(_traveledDistance);
     }
 }

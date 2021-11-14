@@ -37,7 +37,6 @@ public class Player : MonoBehaviour
     public void Die()
     {
         GameOver?.Invoke();
-        Debug.Log("Я убился");
     }
 
 
