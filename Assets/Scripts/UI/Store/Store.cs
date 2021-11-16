@@ -33,7 +33,7 @@ public class Store : MonoBehaviour
     {
         if (itemInStore.Price <= _player.Score)
         {
-            _player.BuyItemInStore(itemInStore);
+           // _player.BuyItemInStore(itemInStore);
             itemInStore.Buy();
             itemInStoreView.SellButtonClick -= OnSellButtonClick;
         }

@@ -18,6 +18,7 @@ public class ObjectsPool : MonoBehaviour
         {
             randonmPrefab = Random.Range(0, Prefab.Length);
             GameObject spawned = Instantiate(Prefab[randonmPrefab], _container.transform);
+
             spawned.SetActive(false);
             _pool.Add(spawned);
         }
