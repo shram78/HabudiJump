@@ -15,6 +15,7 @@ public class RestartGame : MonoBehaviour
     private void OnEnable()
     {
         _restartButton.onClick.AddListener(OnRestartButtonClick);
+
         _player.GameOver += OnPlayerDie;
     }
 

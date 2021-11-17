@@ -2,34 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private Button _resetHiScoreButton;
 
-    private int _globalHiScore;
-    private int _currenScore;
+    public int _hiScore { get; private set; }
+    public int _currenScore { get; private set; }
+
 
     public event UnityAction<int> ScoreChanged;
+    public event UnityAction<int> HiScoreChanged;
 
-    private void Start()
+
+    private void OnEnable()
     {
-        if (PlayerPrefs.HasKey("A"))
-            _globalHiScore = PlayerPrefs.GetInt("A");
-
+        _resetHiScoreButton.onClick.AddListener(ResetHiScore);
     }
 
-    //private void Update()
-    //{
-    //    if (_currenScore > _globalHiScore)
-    //        _globalHiScore = _player.Score;
+    private void OnDisable()
+    {
+        _resetHiScoreButton.onClick.RemoveListener(ResetHiScore);
+    }
 
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("A"))
+            _hiScore = PlayerPrefs.GetInt("A");
+    }
 
-    //    PlayerPrefs.SetInt("A", _globalHiScore);
-    //    PlayerPrefs.Save();
+    private void Update()
+    {
+        if (_currenScore > _hiScore)
+        {
+            _hiScore = _currenScore;
+        }
 
-    //    Debug.Log("GlobalScore == " + _globalHiScore);
-    //}
+        PlayerPrefs.SetInt("A", _hiScore); // вынести из апдейта
+        PlayerPrefs.Save();
+
+        Debug.Log(_hiScore);
+    }
 
     public void AddScore(int score)
     {
@@ -42,5 +56,14 @@ public class PlayerScore : MonoBehaviour
     {
         _currenScore = 0;
         ScoreChanged?.Invoke(_currenScore);
+    }
+
+    private void ResetHiScore()
+    {
+        _hiScore = 0;
+        PlayerPrefs.DeleteKey("A");
+        PlayerPrefs.Save();
+
+        HiScoreChanged?.Invoke(_hiScore);
     }
 }

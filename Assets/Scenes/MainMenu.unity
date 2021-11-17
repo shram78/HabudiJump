@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5019608, g: 0.26666668, b: 0, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.023529412, b: 0.16862746, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 987120773}
+      - m_Target: {fileID: 1224859245}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 987120773}
+      - m_Target: {fileID: 1224859245}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
@@ -509,7 +509,6 @@ GameObject:
   - component: {fileID: 987120772}
   - component: {fileID: 987120771}
   - component: {fileID: 987120770}
-  - component: {fileID: 987120773}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -582,18 +581,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &987120773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 987120769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ccb176da5548294c8e23bfbd7fffb16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1224859240
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +593,7 @@ GameObject:
   - component: {fileID: 1224859243}
   - component: {fileID: 1224859242}
   - component: {fileID: 1224859241}
+  - component: {fileID: 1224859245}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -696,6 +684,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1224859245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224859240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ccb176da5548294c8e23bfbd7fffb16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1441966939
 GameObject:
   m_ObjectHideFlags: 0

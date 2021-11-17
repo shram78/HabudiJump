@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using IJunior.TypedScenes;
 
-public class Menu : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
-    private void Start()
-    {
-        Time.timeScale = 0;
-    }
-
     public void OpenPanel(GameObject panel)
     {
         panel.SetActive(true);
@@ -31,7 +26,6 @@ public class Menu : MonoBehaviour
     public void PlayGame()
     {
         Level_1.Load();
-        Time.timeScale = 0;
     }
 
     public void ExitGame()
