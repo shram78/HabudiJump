@@ -48,6 +48,8 @@ public class Spawner : ObjectsPool
 
     private void SetObstacle(GameObject obstacle, Vector3 spawnPoint)
     {
+        obstacle.GetComponent<Rigidbody2D>().isKinematic = true;
+
         obstacle.SetActive(true);
         obstacle.transform.position = spawnPoint;
     }

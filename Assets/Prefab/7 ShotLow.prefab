@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 6263088154132439294}
   - component: {fileID: 2139237359446757542}
   - component: {fileID: 6183968266428896907}
-  - component: {fileID: -3366419250556541480}
   m_Layer: 6
-  m_Name: 3 Orange
+  m_Name: 7 ShotLow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7115703895816363739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.918, y: -1.781, z: 0}
-  m_LocalScale: {x: 2, y: 4.6259, z: 1}
+  m_LocalScale: {x: 0.559, y: 4.9378, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
-  m_Color: {r: 0.7058824, g: 0.48359114, b: 0.07843137, a: 1}
+  m_Color: {r: 0.07843137, g: 0.7058824, b: 0.5497369, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,7 +94,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7115703895816363739}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a5cce985d017d724eae37d813f8801e1, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -124,24 +123,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc20790e32b60a48863b54691e10c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &-3366419250556541480
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7115703895816363739}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 5
