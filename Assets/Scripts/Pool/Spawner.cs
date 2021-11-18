@@ -9,9 +9,9 @@ public class Spawner : ObjectsPool
     [SerializeField] private Transform _spawnPoint;
 
     private Vector3 _startPosition;
-    private int _minDdistanceBetweenObstacles = 1;
-    private int _maxDistanceBetweenObstacles = 4;
-    private int _distanceBetweenObstacles;
+    private float _minDdistanceBetweenObstacles = 1.5f;
+    private float _maxDistanceBetweenObstacles = 3.5f;
+    private float _distanceBetweenObstacles;
 
     private float _previousObstacleWidth;
     private float _currentObstacleWidth;
@@ -44,6 +44,8 @@ public class Spawner : ObjectsPool
         _previousObstacleWidth = _previousObstacle.transform.localScale.x;
         _currentObstacleWidth = obstacles.transform.localScale.x;
         _distanceBetweenObstacles = Random.Range(_minDdistanceBetweenObstacles, _maxDistanceBetweenObstacles);
+
+        Debug.Log(_distanceBetweenObstacles);
     }
 
     private void SetObstacle(GameObject obstacle, Vector3 spawnPoint)

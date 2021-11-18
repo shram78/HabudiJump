@@ -42,7 +42,7 @@ public class PlayerScore : MonoBehaviour
         PlayerPrefs.SetInt("A", _hiScore); // вынести из апдейта
         PlayerPrefs.Save();
 
-        Debug.Log(_hiScore);
+       // Debug.Log(_hiScore);
     }
 
     public void AddScore(int score)
