@@ -44,8 +44,6 @@ public class Spawner : ObjectsPool
         _previousObstacleWidth = _previousObstacle.transform.localScale.x;
         _currentObstacleWidth = obstacles.transform.localScale.x;
         _distanceBetweenObstacles = Random.Range(_minDdistanceBetweenObstacles, _maxDistanceBetweenObstacles);
-
-        Debug.Log(_distanceBetweenObstacles);
     }
 
     private void SetObstacle(GameObject obstacle, Vector3 spawnPoint)
