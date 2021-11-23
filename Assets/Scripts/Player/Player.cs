@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,7 +10,7 @@ public class Player : MonoBehaviour
 
     public int Score { get; private set; }
 
-    public event UnityAction GameOver;
+    public event UnityAction GameOver; //перед релизом проверить, если нигде не используется- снести
 
     public void Die()
     {

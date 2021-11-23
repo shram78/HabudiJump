@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : ObjectsPool
@@ -8,7 +6,6 @@ public class Spawner : ObjectsPool
     [SerializeField] private GameObject _previousObstacle;
     [SerializeField] private Transform _spawnPoint;
 
-    private Vector3 _startPosition;
     private float _minDdistanceBetweenObstacles = 1.5f;
     private float _maxDistanceBetweenObstacles = 3.5f;
     private float _distanceBetweenObstacles;
@@ -18,7 +15,6 @@ public class Spawner : ObjectsPool
 
     private void Start()
     {
-        _startPosition = transform.position;
         Initialize(_obstaclePrefab);
     }
 
@@ -52,10 +48,5 @@ public class Spawner : ObjectsPool
 
         obstacle.SetActive(true);
         obstacle.transform.position = spawnPoint;
-    }
-
-    public void ResetPosition()
-    {
-        transform.position = _startPosition;
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,7 +30,7 @@ public class Store : MonoBehaviour
 
     private void TrySellItemInStore(ItemInStore itemInStore, ItemInStoreView itemInStoreView)
     {
-        if (itemInStore.Price <= _player.Score)
+        if (itemInStore.Price <= _player.Score) // очки нужны не у плеера
         {
            // _player.BuyItemInStore(itemInStore);
             itemInStore.Buy();

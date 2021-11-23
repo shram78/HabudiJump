@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -22,14 +20,12 @@ public class ViewScoreInGame : MonoBehaviour
 
         _playerScore.ScoreChanged += OnScoreChanged;
         _playerScore.HiScoreChanged += OnHiScoreChanged;
-
     }
 
     private void OnDisable()
     {
         _playerScore.ScoreChanged -= OnScoreChanged;
         _playerScore.HiScoreChanged -= OnHiScoreChanged;
-
     }
 
     private void OnScoreChanged(int score)

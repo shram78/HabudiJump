@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -41,20 +39,12 @@ public class PlayerScore : MonoBehaviour
 
         PlayerPrefs.SetInt("A", _hiScore); // вынести из апдейта
         PlayerPrefs.Save();
-
-       // Debug.Log(_hiScore);
     }
 
     public void AddScore(int score)
     {
         _currenScore = score;
 
-        ScoreChanged?.Invoke(_currenScore);
-    }
-
-    public void ResetScore()
-    {
-        _currenScore = 0;
         ScoreChanged?.Invoke(_currenScore);
     }
 

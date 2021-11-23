@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+[RequireComponent(typeof(SpriteRenderer))]
 
 public class ParallaxBackground : MonoBehaviour
 {
@@ -12,9 +12,11 @@ public class ParallaxBackground : MonoBehaviour
 
     private void Start()
     {
+        Sprite sprite = GetComponent<SpriteRenderer>().sprite;
+
         _cameraTransform = Camera.main.transform;
         _lastCameraPosition = _cameraTransform.position;
-        Sprite sprite = GetComponent<SpriteRenderer>().sprite;
+
         Texture2D texture = sprite.texture;
         _textureUnitSizeX = texture.width / sprite.pixelsPerUnit;
     }

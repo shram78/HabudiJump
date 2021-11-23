@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using IJunior.TypedScenes;
 
@@ -17,7 +15,6 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-
     public void GoMainMenu()
     {
         MainMenu.Load();
@@ -25,6 +22,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
+        Time.timeScale = 0;
         Level_1.Load();
     }
 

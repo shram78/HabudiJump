@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -29,11 +28,5 @@ public class ObjectsPool : MonoBehaviour
         result = _pool.FirstOrDefault(p => p.activeSelf == false);
 
         return result != null;
-    }
-
-    public void ResetPool()
-    {
-        foreach (var item in _pool)
-            item.SetActive(false);
     }
 }

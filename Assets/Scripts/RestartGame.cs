@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using IJunior.TypedScenes;
 
 public class RestartGame : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private Spawner _spawner;
-    [SerializeField] private PlayerScore _playerScore;
     [SerializeField] private GameObject _restartScreen;
     [SerializeField] private Button _restartButton;
 
@@ -27,10 +23,7 @@ public class RestartGame : MonoBehaviour
 
     private void OnRestartButtonClick()
     {
-        _spawner.ResetPool();
-        _spawner.ResetPosition();
-        _playerScore.ResetScore();
-        Time.timeScale = 1;
+        Level_1.Load();
         _restartScreen.SetActive(false);
     }
 
