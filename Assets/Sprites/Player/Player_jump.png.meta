@@ -1,25 +1,40 @@
 fileFormatVersion: 2
-guid: 2709de9217220e94db1c2a6c7a0ccaad
+guid: 8a2c1d2dc013eb14cb6c5b0afb54951c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5807353947552565585
-    second: Run-Sheet_0
+      213: 571713834404479814
+    second: Player_jump_0
   - first:
-      213: -3540906705339577628
-    second: Run-Sheet_1
+      213: 2814666933228530186
+    second: Player_jump_1
   - first:
-      213: -6677707856435898171
-    second: Run-Sheet_2
+      213: 6776090996393542491
+    second: Player_jump_2
   - first:
-      213: 4002533974423468926
-    second: Run-Sheet_3
+      213: 7652808440384974653
+    second: Player_jump_3
   - first:
-      213: 2964676863673857177
-    second: Run-Sheet_4
+      213: 6378258641402658427
+    second: Player_jump_4
   - first:
-      213: -4675099393403972317
-    second: Run-Sheet_5
+      213: 6259206067814468696
+    second: Player_jump_5
+  - first:
+      213: -2704068078737769782
+    second: Player_jump_6
+  - first:
+      213: -2902444215987884443
+    second: Player_jump_7
+  - first:
+      213: 1193561193897360302
+    second: Player_jump_8
+  - first:
+      213: 3646305914308104420
+    second: Player_jump_9
+  - first:
+      213: 2781210445701929830
+    second: Player_jump_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -64,7 +79,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -133,127 +148,232 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run-Sheet_0
+      name: Player_jump_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 10
+        y: 12
+        width: 90
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15945d885add79050800000000000000
-      internalID: 5807353947552565585
+      spriteID: 6430bdc04b22fe700800000000000000
+      internalID: 571713834404479814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run-Sheet_1
+      name: Player_jump_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 109
+        y: 11
+        width: 91
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ea8f6dac1c2cdec0800000000000000
-      internalID: -3540906705339577628
+      spriteID: a0aef1cb9a4bf0720800000000000000
+      internalID: 2814666933228530186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run-Sheet_2
+      name: Player_jump_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 209
+        y: 11
+        width: 91
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c89d47a5140453a0800000000000000
-      internalID: -6677707856435898171
+      spriteID: b5382c52cd2890e50800000000000000
+      internalID: 6776090996393542491
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run-Sheet_3
+      name: Player_jump_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 311
+        y: 11
+        width: 89
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7b71f2817bdb8730800000000000000
-      internalID: 4002533974423468926
+      spriteID: d3fe14feabc343a60800000000000000
+      internalID: 7652808440384974653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run-Sheet_4
+      name: Player_jump_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 414
+        y: 10
+        width: 86
+        height: 49
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 994791566e5a42920800000000000000
-      internalID: 2964676863673857177
+      spriteID: b7efe5ed070248850800000000000000
+      internalID: 6378258641402658427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run-Sheet_5
+      name: Player_jump_5
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 513
+        y: 12
+        width: 87
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32513861fd5be1fb0800000000000000
-      internalID: -4675099393403972317
+      spriteID: 85c0d0881ca2dd650800000000000000
+      internalID: 6259206067814468696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_jump_6
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 11
+        width: 89
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acabc5eb868397ad0800000000000000
+      internalID: -2704068078737769782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_jump_7
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 10
+        width: 90
+        height: 49
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ea7a50d5278b7d0800000000000000
+      internalID: -2902444215987884443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_jump_8
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 10
+        width: 91
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eab71f30591609010800000000000000
+      internalID: 1193561193897360302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_jump_9
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 11
+        width: 89
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e09dbcf8e74a9230800000000000000
+      internalID: 3646305914308104420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_jump_10
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 12
+        width: 90
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b5ba53a28d89620800000000000000
+      internalID: 2781210445701929830
       vertices: []
       indices: 
       edges: []
