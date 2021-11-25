@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 
 public class PlayerMover : MonoBehaviour
 {
@@ -14,10 +15,13 @@ public class PlayerMover : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private bool _isGrounded;
     private int _traveledDistance;
+    private Animator _animator;
+    private const string _isJumping = "IsJumping";
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -26,7 +30,14 @@ public class PlayerMover : MonoBehaviour
             return;
 
         if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+        {
             transform.Translate(Vector2.right * _speed * Time.deltaTime);
+            _animator.SetBool(_isJumping, true);
+        }
+        else
+        {
+            _animator.SetBool(_isJumping, false);
+        }
     }
 
     private void FixedUpdate()

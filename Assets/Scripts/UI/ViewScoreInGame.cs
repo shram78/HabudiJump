@@ -3,38 +3,44 @@ using TMPro;
 
 public class ViewScoreInGame : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _scoreText;
-    [SerializeField] private TMP_Text _hiScoreText;
+    [SerializeField] private TMP_Text _scoreInGame;
+    [SerializeField] private TMP_Text _scoreInFinish;
+    [SerializeField] private TMP_Text _hiScore;
+    [SerializeField] private TMP_Text _totalScore;
 
     [SerializeField] private PlayerScore _playerScore;
+    [SerializeField] private Player _player;
 
     private void Start()
     {
-        _hiScoreText.text = _playerScore._hiScore.ToString();
+        _scoreInGame.text = _playerScore._currenScore.ToString();
+        _totalScore.text = _playerScore._totalScore.ToString();
     }
 
     private void OnEnable()
     {
-        _scoreText.text = _playerScore._currenScore.ToString();
-        _hiScoreText.text = _playerScore._hiScore.ToString();
+        _player.GameOver += OnShowPoints;
 
         _playerScore.ScoreChanged += OnScoreChanged;
-        _playerScore.HiScoreChanged += OnHiScoreChanged;
     }
 
     private void OnDisable()
     {
+        _player.GameOver -= OnShowPoints;
+
         _playerScore.ScoreChanged -= OnScoreChanged;
-        _playerScore.HiScoreChanged -= OnHiScoreChanged;
     }
 
-    private void OnScoreChanged(int score)
+    private void OnScoreChanged()
     {
-        _scoreText.text = score.ToString();
+        _scoreInGame.text = _playerScore._currenScore.ToString();
+
+        _hiScore.text = _playerScore._hiScore.ToString();
     }
 
-    private void OnHiScoreChanged(int hiScore)
+    private void OnShowPoints()
     {
-        _hiScoreText.text = _playerScore._hiScore.ToString();
+        _scoreInFinish.text = _playerScore._currenScore.ToString();
+        _hiScore.text = _playerScore._hiScore.ToString();
     }
 }

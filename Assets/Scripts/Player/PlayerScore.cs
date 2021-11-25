@@ -10,27 +10,26 @@ public class PlayerScore : MonoBehaviour
     private const string _saveHiScore = "HiScore";
     private const string _saveTotalScore = "TotalScore";
 
-
     public int _hiScore { get; private set; }
+
     public int _currenScore { get; private set; }
 
     public int _totalScore { get; private set; }
 
-    public event UnityAction<int> ScoreChanged;
-    public event UnityAction<int> HiScoreChanged;
+    public event UnityAction ScoreChanged;
 
     private void OnEnable()
     {
-        _player.GameOver += AddTotalScore;
-
         _resetHiScoreButton.onClick.AddListener(ResetHiScore);
+
+        _player.GameOver += AddTotalScore;
     }
 
     private void OnDisable()
     {
-        _player.GameOver -= AddTotalScore;
-
         _resetHiScoreButton.onClick.RemoveListener(ResetHiScore);
+
+        _player.GameOver -= AddTotalScore;
     }
 
     private void Awake()
@@ -38,8 +37,8 @@ public class PlayerScore : MonoBehaviour
         if (PlayerPrefs.HasKey(_saveHiScore))
             _hiScore = PlayerPrefs.GetInt(_saveHiScore);
 
-        if (PlayerPrefs.HasKey(_saveTotalScore))  // объединить в функцией выше
-            _hiScore = PlayerPrefs.GetInt(_saveTotalScore);
+        if (PlayerPrefs.HasKey(_saveTotalScore))  
+            _totalScore = PlayerPrefs.GetInt(_saveTotalScore);
     }
 
     public void AddScore(int score)
@@ -53,34 +52,31 @@ public class PlayerScore : MonoBehaviour
             SaveHiScore();
         }
 
-        ScoreChanged?.Invoke(_currenScore);
+        ScoreChanged?.Invoke();
     }
 
     private void AddTotalScore()
     {
         _totalScore += _currenScore;
-
-        Debug.Log("Total Score = " + _totalScore);
+        PlayerPrefs.SetInt(_saveTotalScore, _totalScore); 
+        PlayerPrefs.Save();
     }
 
     private void SaveHiScore()
     {
-        PlayerPrefs.SetInt(_saveHiScore, _hiScore); // вынести из апдейта
+        PlayerPrefs.SetInt(_saveHiScore, _hiScore); 
         PlayerPrefs.Save();
     }
 
-    private void SaveTotalScore()
-    {
-        PlayerPrefs.SetInt(_saveTotalScore, _totalScore); // вынести из апдейта
-        PlayerPrefs.Save();
-    }
-
-    private void ResetHiScore()
+      private void ResetHiScore()
     {
         _hiScore = 0;
+        _totalScore = 0;
         PlayerPrefs.DeleteKey(_saveHiScore);
+        PlayerPrefs.DeleteKey(_saveTotalScore);
+
         PlayerPrefs.Save();
 
-        HiScoreChanged?.Invoke(_hiScore);
+        ScoreChanged?.Invoke();
     }
 }

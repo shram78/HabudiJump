@@ -1,40 +1,31 @@
 fileFormatVersion: 2
-guid: 8a2c1d2dc013eb14cb6c5b0afb54951c
+guid: 134e71394e020f94ea9f2bf81d212155
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 571713834404479814
-    second: Player_jump_0
+      213: 1755909318337296907
+    second: Chicken_Fly-Sheet_0
   - first:
-      213: 2814666933228530186
-    second: Player_jump_1
+      213: 3585093347627476499
+    second: Chicken_Fly-Sheet_1
   - first:
-      213: 6776090996393542491
-    second: Player_jump_2
+      213: -3261899782072100532
+    second: Chicken_Fly-Sheet_2
   - first:
-      213: 7652808440384974653
-    second: Player_jump_3
+      213: -8001921226887372653
+    second: Chicken_Fly-Sheet_3
   - first:
-      213: 6378258641402658427
-    second: Player_jump_4
+      213: -4194037766661324750
+    second: Chicken_Fly-Sheet_4
   - first:
-      213: 6259206067814468696
-    second: Player_jump_5
+      213: -324508071137436487
+    second: Chicken_Fly-Sheet_5
   - first:
-      213: -2704068078737769782
-    second: Player_jump_6
+      213: 2933430926853192040
+    second: Chicken_Fly-Sheet_6
   - first:
-      213: -2902444215987884443
-    second: Player_jump_7
-  - first:
-      213: 1193561193897360302
-    second: Player_jump_8
-  - first:
-      213: 3646305914308104420
-    second: Player_jump_9
-  - first:
-      213: 2781210445701929830
-    second: Player_jump_10
+      213: 2079800197155939996
+    second: Chicken_Fly-Sheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -148,53 +139,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_jump_0
+      name: Chicken_Fly-Sheet_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 12
-        width: 90
-        height: 54
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6430bdc04b22fe700800000000000000
-      internalID: 571713834404479814
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_jump_1
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 11
-        width: 91
-        height: 51
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a0aef1cb9a4bf0720800000000000000
-      internalID: 2814666933228530186
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_jump_2
-      rect:
-        serializedVersion: 2
-        x: 209
-        y: 11
+        x: 3
+        y: 5
         width: 91
         height: 48
       alignment: 7
@@ -204,61 +153,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5382c52cd2890e50800000000000000
-      internalID: 6776090996393542491
+      spriteID: b0afa49c83e3e5810800000000000000
+      internalID: 1755909318337296907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_jump_3
+      name: Chicken_Fly-Sheet_1
       rect:
         serializedVersion: 2
-        x: 311
-        y: 11
-        width: 89
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d3fe14feabc343a60800000000000000
-      internalID: 7652808440384974653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_jump_4
-      rect:
-        serializedVersion: 2
-        x: 414
-        y: 10
-        width: 86
-        height: 49
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7efe5ed070248850800000000000000
-      internalID: 6378258641402658427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_jump_5
-      rect:
-        serializedVersion: 2
-        x: 513
-        y: 12
-        width: 87
+        x: 98
+        y: 6
+        width: 91
         height: 47
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -267,20 +174,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85c0d0881ca2dd650800000000000000
-      internalID: 6259206067814468696
+      spriteID: 316a3ffa76fc0c130800000000000000
+      internalID: 3585093347627476499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_jump_6
+      name: Chicken_Fly-Sheet_2
       rect:
         serializedVersion: 2
-        x: 611
-        y: 11
+        x: 192
+        y: 5
+        width: 92
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c491ba43e676bb2d0800000000000000
+      internalID: -3261899782072100532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Fly-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 6
         width: 89
-        height: 48
+        height: 44
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,62 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acabc5eb868397ad0800000000000000
-      internalID: -2704068078737769782
+      spriteID: 39068b64a0773f090800000000000000
+      internalID: -8001921226887372653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_jump_7
+      name: Chicken_Fly-Sheet_4
       rect:
         serializedVersion: 2
-        x: 710
-        y: 10
-        width: 90
-        height: 49
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56ea7a50d5278b7d0800000000000000
-      internalID: -2902444215987884443
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_jump_8
-      rect:
-        serializedVersion: 2
-        x: 809
-        y: 10
-        width: 91
-        height: 52
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eab71f30591609010800000000000000
-      internalID: 1193561193897360302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_jump_9
-      rect:
-        serializedVersion: 2
-        x: 911
-        y: 11
+        x: 383
+        y: 5
         width: 89
-        height: 51
+        height: 46
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -351,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e09dbcf8e74a9230800000000000000
-      internalID: 3646305914308104420
+      spriteID: 23044974fd8cbc5c0800000000000000
+      internalID: -4194037766661324750
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_jump_10
+      name: Chicken_Fly-Sheet_5
       rect:
         serializedVersion: 2
-        x: 1010
-        y: 12
-        width: 90
-        height: 54
+        x: 478
+        y: 6
+        width: 87
+        height: 45
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,8 +258,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66b5ba53a28d89620800000000000000
-      internalID: 2781210445701929830
+      spriteID: 9bc1b1de0ad1f7bf0800000000000000
+      internalID: -324508071137436487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Fly-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 5
+        width: 87
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 869ba30d2e3a5b820800000000000000
+      internalID: 2933430926853192040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Fly-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 6
+        width: 89
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c966443924fecdc10800000000000000
+      internalID: 2079800197155939996
       vertices: []
       indices: 
       edges: []
