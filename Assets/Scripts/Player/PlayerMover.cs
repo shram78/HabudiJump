@@ -55,7 +55,7 @@ public class PlayerMover : MonoBehaviour
 
         transform.Translate(Vector2.right * _speed * Time.deltaTime);
 
-        _rigidbody2D.AddForce(new Vector2(_inertionX, 0), ForceMode2D.Force);
+        _rigidbody2D.AddForce(new Vector2(_inertionX, 0) * Time.deltaTime, ForceMode2D.Force);
     }
 
     private void Jump()
