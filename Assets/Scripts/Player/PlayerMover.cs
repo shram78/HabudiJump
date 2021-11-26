@@ -10,6 +10,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _inertionX;
     [SerializeField] private PlayerScore _playerScore;
 
     private Rigidbody2D _rigidbody2D;
@@ -30,14 +31,10 @@ public class PlayerMover : MonoBehaviour
             return;
 
         if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
-        {
-            transform.Translate(Vector2.right * _speed * Time.deltaTime);
-            _animator.SetBool(_isJumping, true);
-        }
+            Move();
+
         else
-        {
             _animator.SetBool(_isJumping, false);
-        }
     }
 
     private void FixedUpdate()
@@ -50,6 +47,15 @@ public class PlayerMover : MonoBehaviour
 
             AddScoreForDistanse();
         }
+    }
+
+    private void Move()
+    {
+        _animator.SetBool(_isJumping, true);
+
+        transform.Translate(Vector2.right * _speed * Time.deltaTime);
+
+        _rigidbody2D.AddForce(new Vector2(_inertionX, 0), ForceMode2D.Force);
     }
 
     private void Jump()
