@@ -1332,6 +1332,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364406184}
   m_CullTransparentMesh: 1
+--- !u!1 &422903543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422903544}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422903544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422903543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0307503, y: -0.76616275, z: -11.401367}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &449511157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,7 +1547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 2147057715}
-  _cameraSpeed: 0
+  _cameraSpeed: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3690,7 +3720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1386646379
 Transform:
   m_ObjectHideFlags: 0
@@ -3785,9 +3815,9 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -10652,6 +10682,7 @@ GameObject:
   - component: {fileID: 2147057717}
   - component: {fileID: 2147057716}
   - component: {fileID: 2147057718}
+  - component: {fileID: 2147057719}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10675,9 +10706,9 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  _speed: 3
-  _jumpForce: 6
-  _inertionX: 1
+  _speed: 4
+  _jumpForce: 5
+  _inertionX: 300
   _playerScore: {fileID: 1421557190}
 --- !u!50 &2147057712
 Rigidbody2D:
@@ -10828,3 +10859,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2147057719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147057710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c064356040839a4fb03e0da3cb24fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 1386646381}
