@@ -29,17 +29,23 @@ public class PlayerMover : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-
-        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
-            Move();
-
-        else
-            _animator.SetBool(_isJumping, false);
     }
 
     private void FixedUpdate()
     {
         _isGrounded = Physics2D.OverlapCircle(_groundChecker.position, 0.1f, _groundLayer);
+
+        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+        {
+            Move();
+
+            _animator.SetBool(_isJumping, true);
+        }
+
+        else
+        {
+            _animator.SetBool(_isJumping, false);
+        }
 
         if (_isGrounded)
         {
@@ -51,8 +57,6 @@ public class PlayerMover : MonoBehaviour
 
     private void Move()
     {
-        _animator.SetBool(_isJumping, true);
-
         transform.Translate(Vector2.right * _speed * Time.deltaTime);
 
         _rigidbody2D.AddForce(new Vector2(_inertionX, 0) * Time.deltaTime, ForceMode2D.Force);
@@ -60,7 +64,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Jump()
     {
-        _rigidbody2D.velocity = Vector2.up * _jumpForce;
+        _rigidbody2D.velocity = Vector2.up * _jumpForce * Time.deltaTime;
     }
 
     private void AddScoreForDistanse()
