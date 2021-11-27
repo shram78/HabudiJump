@@ -1,36 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(Animator))]
 
 public class PlayerMover : MonoBehaviour
 {
-    [SerializeField] private Vector3 _startPosition;
-    [SerializeField] private PlayerCollisionHandler _playerCollisionHandler;
     [SerializeField] private Transform _groundChecker;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _inertionX;
+    [SerializeField] private PlayerScore _playerScore;
 
-    private Vector3 _finishPosition;
     private Rigidbody2D _rigidbody2D;
     private bool _isGrounded;
+    private int _traveledDistance;
+    private Animator _animator;
+    private const string _isJumping = "IsJumping";
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-
-        ResetPlayer();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            transform.Translate(Vector2.right * _speed * Time.deltaTime);
-        }
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+            Move();
+
+        else
+            _animator.SetBool(_isJumping, false);
     }
 
     private void FixedUpdate()
@@ -38,7 +42,20 @@ public class PlayerMover : MonoBehaviour
         _isGrounded = Physics2D.OverlapCircle(_groundChecker.position, 0.1f, _groundLayer);
 
         if (_isGrounded)
+        {
             Jump();
+
+            AddScoreForDistanse();
+        }
+    }
+
+    private void Move()
+    {
+        _animator.SetBool(_isJumping, true);
+
+        transform.Translate(Vector2.right * _speed * Time.deltaTime);
+
+        _rigidbody2D.AddForce(new Vector2(_inertionX, 0) * Time.deltaTime, ForceMode2D.Force);
     }
 
     private void Jump()
@@ -46,9 +63,9 @@ public class PlayerMover : MonoBehaviour
         _rigidbody2D.velocity = Vector2.up * _jumpForce;
     }
 
-    public void ResetPlayer()
+    private void AddScoreForDistanse()
     {
-        transform.position = _startPosition;
-        _rigidbody2D.velocity = Vector2.zero;
+        _traveledDistance = (int)transform.position.x;
+        _playerScore.AddScore(_traveledDistance);
     }
 }
