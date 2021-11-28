@@ -1516,8 +1516,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c37af1ff7e9264b805c091cabad79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2147057715}
-  _cameraSpeed: 0
+  _target: {fileID: 2147057715}
+  _cameraSpeed: 2
+  _cameraSmooth: 5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2636,7 +2637,7 @@ GameObject:
   - component: {fileID: 845108756}
   - component: {fileID: 845108755}
   - component: {fileID: 845108754}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: StartPlatform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3779,7 +3780,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386646378}
   serializedVersion: 7
-  lengthInSec: 2
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -3855,7 +3856,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 2
-      minScalar: 1
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3907,7 +3908,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.31
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4023,7 +4024,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -4345,7 +4346,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4399,7 +4400,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 10
-    angle: 25
+    angle: 65.87
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -4485,7 +4486,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.51
+      value: 0.6
       mode: 0
       spread: 0
       speed:
@@ -4604,7 +4605,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 30
+      scalar: 60
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -6421,7 +6422,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -6474,7 +6475,7 @@ ParticleSystem:
     strengthY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -6527,7 +6528,7 @@ ParticleSystem:
     strengthZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -6578,7 +6579,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 1
-    frequency: 0.7
+    frequency: 0.0001
     damping: 0
     octaves: 1
     octaveMultiplier: 0.5

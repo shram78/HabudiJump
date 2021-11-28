@@ -6,7 +6,7 @@ public class FeatherTrailGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
             _particleSystem.Play();
     }
 }
