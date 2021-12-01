@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 
 public class PlayerMover : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _inertionX;
     [SerializeField] private PlayerScore _playerScore;
+    [SerializeField] private AudioSource _jumpSound;
 
     private Rigidbody2D _rigidbody2D;
     private bool _isGrounded;
@@ -39,7 +41,7 @@ public class PlayerMover : MonoBehaviour
         {
             Move();
 
-            _animator.SetBool(_isJumping, true);
+            
         }
 
         else
@@ -49,21 +51,28 @@ public class PlayerMover : MonoBehaviour
 
         if (_isGrounded)
         {
+
             Jump();
 
             AddScoreForDistanse();
         }
+
     }
 
     private void Move()
     {
+        _animator.SetBool(_isJumping, true);
+
         transform.Translate(Vector2.right * _speed * Time.deltaTime);
 
         _rigidbody2D.AddForce(new Vector2(_inertionX, 0) * Time.deltaTime, ForceMode2D.Force);
+
     }
 
     private void Jump()
     {
+        _jumpSound.Play();
+
         _rigidbody2D.velocity = Vector2.up * _jumpForce * Time.deltaTime;
     }
 
