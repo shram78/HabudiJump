@@ -14,12 +14,24 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _inertionX;
     [SerializeField] private PlayerScore _playerScore;
     [SerializeField] private AudioSource _jumpSound;
+    [SerializeField] private Player _player;
 
     private Rigidbody2D _rigidbody2D;
     private bool _isGrounded;
     private int _traveledDistance;
     private Animator _animator;
     private const string _isJumping = "IsJumping";
+    private const string _isDie = "IsDie";
+
+    private void OnEnable()
+    {
+        _player.BeforeDie += OnPlayerDie;
+    }
+
+    private void OnDisable()
+    {
+        _player.BeforeDie -= OnPlayerDie;
+    }
 
     private void Start()
     {
@@ -33,15 +45,15 @@ public class PlayerMover : MonoBehaviour
             return;
     }
 
+
     private void FixedUpdate()
     {
         _isGrounded = Physics2D.OverlapCircle(_groundChecker.position, 0.1f, _groundLayer);
 
         if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
         {
+            _animator.SetBool(_isJumping, true);
             Move();
-
-            
         }
 
         else
@@ -51,22 +63,17 @@ public class PlayerMover : MonoBehaviour
 
         if (_isGrounded)
         {
-
             Jump();
 
             AddScoreForDistanse();
         }
-
     }
 
     private void Move()
     {
-        _animator.SetBool(_isJumping, true);
-
         transform.Translate(Vector2.right * _speed * Time.deltaTime);
 
         _rigidbody2D.AddForce(new Vector2(_inertionX, 0) * Time.deltaTime, ForceMode2D.Force);
-
     }
 
     private void Jump()
@@ -80,5 +87,11 @@ public class PlayerMover : MonoBehaviour
     {
         _traveledDistance = (int)transform.position.x;
         _playerScore.AddScore(_traveledDistance);
+    }
+
+    private void OnPlayerDie()
+    {
+        _rigidbody2D.AddForce(new Vector2(10, 10), ForceMode2D.Impulse);
+        _animator.SetBool(_isDie, true);
     }
 }

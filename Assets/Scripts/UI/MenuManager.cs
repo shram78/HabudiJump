@@ -66,6 +66,7 @@ public class MenuManager : MonoBehaviour
 
     private void OnPlayerDie()
     {
+
         Time.timeScale = 0;
         _restartScreen.SetActive(true);
     }
