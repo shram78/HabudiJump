@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private PlayerScore _playerScore;
     [SerializeField] private AudioSource _buttonClickSound;
+    [SerializeField] private AudioSource _newHiScoreSound;
+
     [SerializeField] private GameObject _restartScreen;
     [SerializeField] private GameObject _StoreScreen;
+    [SerializeField] private Image _newHiScore;
 
     [SerializeField] private Button _openStoreButton;
     [SerializeField] private Button _closeStoreButton;
@@ -16,6 +20,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button _exitMainMenuButton;
     [SerializeField] private Button _restartButton;
 
+    private bool _isSetNewHiScore = false;
 
     private void OnEnable()
     {
@@ -25,6 +30,7 @@ public class MenuManager : MonoBehaviour
         _exitMainMenuButton.onClick.AddListener(OnBackMainMenuButton);
         _restartButton.onClick.AddListener(OnRestartButtonClick);
         _player.GameOver += OnPlayerDie;
+        _playerScore.NewHiScore += OnPlayerNewHiScore;
     }
 
     private void OnDisable()
@@ -35,9 +41,10 @@ public class MenuManager : MonoBehaviour
         _exitMainMenuButton.onClick.RemoveListener(OnBackMainMenuButton);
         _restartButton.onClick.RemoveListener(OnRestartButtonClick);
         _player.GameOver -= OnPlayerDie;
+        _playerScore.NewHiScore -= OnPlayerNewHiScore;
     }
 
-    private void OnBackMainMenuButton() 
+    private void OnBackMainMenuButton()
     {
         Time.timeScale = 1;
         MainMenu.Load();
@@ -59,6 +66,7 @@ public class MenuManager : MonoBehaviour
 
     private void OnRestartButtonClick()
     {
+        Time.timeScale = 0;
         _buttonClickSound.Play();
         Level_1.Load();
         _restartScreen.SetActive(false);
@@ -66,8 +74,16 @@ public class MenuManager : MonoBehaviour
 
     private void OnPlayerDie()
     {
-
-        Time.timeScale = 0;
         _restartScreen.SetActive(true);
+
+        if (_isSetNewHiScore)
+            _newHiScoreSound.Play();
+    }
+
+    private void OnPlayerNewHiScore()
+    {
+        _newHiScore.gameObject.SetActive(true);
+
+        _isSetNewHiScore = true;
     }
 }

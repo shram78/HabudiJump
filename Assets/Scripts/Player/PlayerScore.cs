@@ -18,6 +18,8 @@ public class PlayerScore : MonoBehaviour
 
     public event UnityAction ScoreChanged;
 
+    public event UnityAction NewHiScore;
+
     private void OnEnable()
     {
         _resetHiScoreButton.onClick.AddListener(ResetHiScore);
@@ -50,6 +52,8 @@ public class PlayerScore : MonoBehaviour
             _hiScore = _currenScore;
 
             SaveHiScore();
+
+            NewHiScore?.Invoke();
         }
 
         ScoreChanged?.Invoke();
