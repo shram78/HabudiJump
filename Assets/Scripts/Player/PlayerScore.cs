@@ -17,10 +17,17 @@ public class PlayerScore : MonoBehaviour
     public int TotalScore { get; private set; }
 
     public event UnityAction ScoreChanged;
-
     public event UnityAction TotalScoreChanged;
-
     public event UnityAction NewHiScore;
+
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey(_saveHiScore))
+            HiScore = PlayerPrefs.GetInt(_saveHiScore);
+
+        if (PlayerPrefs.HasKey(_saveTotalScore))
+            TotalScore = PlayerPrefs.GetInt(_saveTotalScore);
+    }
 
     private void OnEnable()
     {
@@ -34,15 +41,6 @@ public class PlayerScore : MonoBehaviour
         _resetHiScoreButton.onClick.RemoveListener(ResetHiScore);
 
         _player.GameOver -= AddTotalScore;
-    }
-
-    private void Awake()
-    {
-        if (PlayerPrefs.HasKey(_saveHiScore))
-            HiScore = PlayerPrefs.GetInt(_saveHiScore);
-
-        if (PlayerPrefs.HasKey(_saveTotalScore))  
-            TotalScore = PlayerPrefs.GetInt(_saveTotalScore);
     }
 
     public void AddScore(int score)
@@ -92,6 +90,4 @@ public class PlayerScore : MonoBehaviour
 
         ScoreChanged?.Invoke();
     }
-
-
 }

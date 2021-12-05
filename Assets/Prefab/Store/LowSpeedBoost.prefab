@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: Low Boost
-  _price: 1
+  _price: 10
   _icon: {fileID: 21300000, guid: 02c24567b5ab0e74e94d2ee5cc702224, type: 3}
   _isBued: 1

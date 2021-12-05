@@ -10,7 +10,6 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Button _exitButton;
     [SerializeField] private Button _iJuniorUrlButton;
 
-
     private void OnEnable()
     {
         _playButton.onClick.AddListener(OnPlayButtonClick);

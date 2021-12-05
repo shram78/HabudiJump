@@ -34,7 +34,7 @@ public class PlayerTracker : MonoBehaviour
         _target.BeforeDie -= OnCameraShake;
     }
 
-    public void OnCameraShake()
+    private void OnCameraShake()
     {
         _animator.SetBool(_isGameOver, true);
     }

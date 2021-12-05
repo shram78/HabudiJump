@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class HiSpeedBoost : Boost
 {
@@ -8,7 +5,6 @@ public class HiSpeedBoost : Boost
 
     public override int GetPower()
     {
-        Debug.Log("Использован буст hi");
         return _power;
     }
 }

@@ -26,18 +26,18 @@ public class BoostView : MonoBehaviour
         _sellButton.onClick.RemoveListener(TryLockItem);
     }
 
-    private void TryLockItem()
-    {
-        if (_boost.IsBued)
-            _sellButton.interactable = false;
-    }
-
     public void Render(Boost boost)
     {
         _boost = boost;
         _label.text = boost.Label;
         _price.text = boost.Price.ToString();
         _icon.sprite = boost.Icon;
+    }
+
+    private void TryLockItem()
+    {
+        if (_boost.IsBued)
+            _sellButton.interactable = false;
     }
 
     private void OnButtonClick()

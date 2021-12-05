@@ -5,9 +5,7 @@ public class Store : MonoBehaviour
 {
     [SerializeField] private List<Boost> _boosts;
     [SerializeField] private Player _player;
-
     [SerializeField] private PlayerScore _playerScore;
-
     [SerializeField] private BoostView _template;
     [SerializeField] private GameObject _itemContainer;
 
@@ -22,7 +20,9 @@ public class Store : MonoBehaviour
     private void AddItem(Boost boost)
     {
         var view = Instantiate(_template, _itemContainer.transform);
+
         view.SellButtonClick += OnSellButtonClick;
+
         view.Render(boost);
     }
 
@@ -36,7 +36,9 @@ public class Store : MonoBehaviour
         if (boost.Price <= _playerScore.TotalScore)
         {
             _player.BuyBoost(boost);
+
             boost.Buy();
+
             boostView.SellButtonClick -= OnSellButtonClick;
         }
     }

@@ -3,26 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private List<Boost> _boosts;
-
     [SerializeField] private AudioSource _dieSound;
     [SerializeField] private AudioSource _buySound;
     [SerializeField] private AudioSource _useBoostSound;
-
     [SerializeField] private PlayerScore _playerScore;
-
 
     private Boost _currentBoost;
     private int _currentBoostNumber;
     private Rigidbody2D _rigidbody2D;
-
     public event UnityAction BeforeDie;
     public event UnityAction GameOver;
     public event UnityAction<Boost> BoostChanged;
-    public event UnityAction CurrentBoostChanged;
-
+    public event UnityAction NoNextBoost;
 
     private void Start()
     {
@@ -44,8 +41,8 @@ public class Player : MonoBehaviour
         _playerScore.SubtractTotalScore(boost.Price);
 
         _boosts.Add(boost);
-        CurrentBoostChanged?.Invoke();
 
+        NoNextBoost?.Invoke();
     }
 
     public void NextBoost()
@@ -55,13 +52,13 @@ public class Player : MonoBehaviour
             _currentBoostNumber = 0;
             return;
         }
+
         else
         {
             _currentBoostNumber++;
 
             ChangeBoost(_boosts[_currentBoostNumber]);
         }
-
     }
 
     public void UseCurrentBoost()
@@ -84,8 +81,11 @@ public class Player : MonoBehaviour
             BoostChanged?.Invoke(_boosts[0]);
         }
 
-        CurrentBoostChanged?.Invoke();
-
+        NoNextBoost?.Invoke();
+    }
+    public int GetBoostCount()
+    {
+        return _boosts.Count;
     }
 
     private void ChangeBoost(Boost boost)
@@ -97,15 +97,12 @@ public class Player : MonoBehaviour
     private IEnumerator DelayDie()
     {
         _dieSound.Play();
+
         while (_dieSound.isPlaying)
             yield return null;
 
         GameOver?.Invoke();
-        gameObject.SetActive(false);
-    }
 
-    public int GetBoostCount()
-    {
-        return _boosts.Count;
+        gameObject.SetActive(false);
     }
 }

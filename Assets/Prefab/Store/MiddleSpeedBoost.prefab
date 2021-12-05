@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: Middle Boost
-  _price: 5
+  _price: 50
   _icon: {fileID: 21300000, guid: 6b8835b2ba09e2142a666191686379d4, type: 3}
-  _isBued: 1
+  _isBued: 0

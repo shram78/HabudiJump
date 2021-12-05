@@ -9,7 +9,6 @@ public class Spawner : ObjectsPool
     private float _minDdistanceBetweenObstacles = 1.5f;
     private float _maxDistanceBetweenObstacles = 3.5f;
     private float _distanceBetweenObstacles;
-
     private float _previousObstacleWidth;
     private float _currentObstacleWidth;
 
@@ -47,6 +46,7 @@ public class Spawner : ObjectsPool
         obstacle.GetComponent<Rigidbody2D>().isKinematic = true;
 
         obstacle.SetActive(true);
+
         obstacle.transform.position = spawnPoint;
     }
 }

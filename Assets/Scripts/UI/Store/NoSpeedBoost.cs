@@ -1,4 +1,3 @@
-using UnityEngine;
 
 public class NoSpeedBoost : Boost
 {
@@ -6,7 +5,6 @@ public class NoSpeedBoost : Boost
 
     public override int GetPower()
     {
-        Debug.Log("Использован буст no");
         return _power;
     }
 }

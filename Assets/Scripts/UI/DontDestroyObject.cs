@@ -14,7 +14,6 @@ public class DontDestroyObject : MonoBehaviour
         else
         {
             _instance = this;
-
             DontDestroyOnLoad(gameObject);
         }
     }

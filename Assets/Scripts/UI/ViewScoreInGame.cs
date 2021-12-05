@@ -7,15 +7,8 @@ public class ViewScoreInGame : MonoBehaviour
     [SerializeField] private TMP_Text _scoreInFinish;
     [SerializeField] private TMP_Text _hiScore;
     [SerializeField] private TMP_Text _totalScore;
-
     [SerializeField] private PlayerScore _playerScore;
     [SerializeField] private Player _player;
-
-    private void Start()
-    {
-        _scoreInGame.text = _playerScore.CurrenScore.ToString();
-        _totalScore.text = _playerScore.TotalScore.ToString();
-    }
 
     private void OnEnable()
     {
@@ -26,6 +19,12 @@ public class ViewScoreInGame : MonoBehaviour
         _playerScore.TotalScoreChanged += OnScoreChanged;
     }
 
+    private void Start()
+    {
+        _scoreInGame.text = _playerScore.CurrenScore.ToString();
+        _totalScore.text = _playerScore.TotalScore.ToString();
+    }
+
     private void OnDisable()
     {
         _player.GameOver -= OnShowPoints;
@@ -33,7 +32,6 @@ public class ViewScoreInGame : MonoBehaviour
         _playerScore.ScoreChanged -= OnScoreChanged;
 
         _playerScore.TotalScoreChanged -= OnScoreChanged;
-
     }
 
     private void OnScoreChanged()

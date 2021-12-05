@@ -28,14 +28,10 @@ public class PlayerMover : MonoBehaviour
         _player.BeforeDie += OnPlayerDie;
     }
 
-    private void OnDisable()
-    {
-        _player.BeforeDie -= OnPlayerDie;
-    }
-
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+
         _animator = GetComponent<Animator>();
     }
 
@@ -43,30 +39,27 @@ public class PlayerMover : MonoBehaviour
     {
         _isGrounded = Physics2D.OverlapCircle(_groundChecker.position, 0.1f, _groundLayer);
 
+        _animator.SetBool(_isJumping, false);
+
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
-            {
-                _animator.SetBool(_isJumping, true);
                 Move();
-            }
-
-            else
-            {
-                _animator.SetBool(_isJumping, false);
-            }
 
             if (_isGrounded)
-            {
                 Jump();
-
-                AddScoreForDistanse();
-            }
         }
+    }
+
+    private void OnDisable()
+    {
+        _player.BeforeDie -= OnPlayerDie;
     }
 
     private void Move()
     {
+        _animator.SetBool(_isJumping, true);
+
         transform.Translate(Vector2.right * _speed * Time.deltaTime);
 
         _rigidbody2D.AddForce(new Vector2(_inertionX, 0) * Time.deltaTime, ForceMode2D.Force);
@@ -77,6 +70,8 @@ public class PlayerMover : MonoBehaviour
         _jumpSound.Play();
 
         _rigidbody2D.velocity = Vector2.up * _jumpForce * Time.deltaTime;
+
+        AddScoreForDistanse();
     }
 
     private void AddScoreForDistanse()
@@ -88,8 +83,7 @@ public class PlayerMover : MonoBehaviour
     private void OnPlayerDie()
     {
         _rigidbody2D.AddForce(new Vector2(5, 10), ForceMode2D.Impulse);
+
         _playerDie.Play();
     }
-
-
 }

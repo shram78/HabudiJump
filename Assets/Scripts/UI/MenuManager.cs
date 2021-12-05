@@ -1,7 +1,6 @@
 using UnityEngine;
 using IJunior.TypedScenes;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
@@ -9,11 +8,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private PlayerScore _playerScore;
     [SerializeField] private AudioSource _buttonClickSound;
     [SerializeField] private AudioSource _newHiScoreSound;
-
     [SerializeField] private GameObject _restartScreen;
     [SerializeField] private GameObject _StoreScreen;
     [SerializeField] private Image _newHiScore;
-
     [SerializeField] private Button _openStoreButton;
     [SerializeField] private Button _closeStoreButton;
     [SerializeField] private Button _backMainMenuButton;
@@ -23,14 +20,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button _useCurrentBoostButton;
 
     private bool _isSetNewHiScore = false;
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Q) || Input.GetMouseButton(1))
-        {
-            OnUseBoostButtonClick();
-        }
-    }
 
     private void OnEnable()
     {
@@ -44,7 +33,13 @@ public class MenuManager : MonoBehaviour
 
         _player.GameOver += OnPlayerDie;
         _playerScore.NewHiScore += OnPlayerNewHiScore;
-        _player.CurrentBoostChanged += ShowNexBoostButton;
+        _player.NoNextBoost += ShowNexBoostButton;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Q) || Input.GetMouseButton(1))
+            OnUseBoostButtonClick();
     }
 
     private void OnDisable()
@@ -59,7 +54,7 @@ public class MenuManager : MonoBehaviour
 
         _player.GameOver -= OnPlayerDie;
         _playerScore.NewHiScore -= OnPlayerNewHiScore;
-        _player.CurrentBoostChanged -= ShowNexBoostButton;
+        _player.NoNextBoost -= ShowNexBoostButton;
     }
 
     private void OnUseBoostButtonClick()
@@ -76,6 +71,7 @@ public class MenuManager : MonoBehaviour
     private void OnOpenStore()
     {
         _buttonClickSound.Play();
+
         Time.timeScale = 0;
         _StoreScreen.SetActive(true);
     }
@@ -83,6 +79,7 @@ public class MenuManager : MonoBehaviour
     private void OnCloseStore()
     {
         _buttonClickSound.Play();
+
         Time.timeScale = 1;
         _StoreScreen.SetActive(false);
     }
@@ -91,6 +88,7 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = 0;
         _buttonClickSound.Play();
+
         Level_1.Load();
         _restartScreen.SetActive(false);
     }
@@ -115,7 +113,7 @@ public class MenuManager : MonoBehaviour
         _player.NextBoost();
     }
 
-    public void ShowNexBoostButton()
+    private void ShowNexBoostButton()
     {
         if (_player.GetBoostCount() <= 1)
             _nextBoostButton.gameObject.SetActive(false);
