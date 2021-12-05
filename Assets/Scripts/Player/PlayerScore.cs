@@ -10,13 +10,15 @@ public class PlayerScore : MonoBehaviour
     private const string _saveHiScore = "HiScore";
     private const string _saveTotalScore = "TotalScore";
 
-    public int _hiScore { get; private set; }
+    public int HiScore { get; private set; }
 
-    public int _currenScore { get; private set; }
+    public int CurrenScore { get; private set; }
 
-    public int _totalScore { get; private set; }
+    public int TotalScore { get; private set; }
 
     public event UnityAction ScoreChanged;
+
+    public event UnityAction TotalScoreChanged;
 
     public event UnityAction NewHiScore;
 
@@ -37,19 +39,19 @@ public class PlayerScore : MonoBehaviour
     private void Awake()
     {
         if (PlayerPrefs.HasKey(_saveHiScore))
-            _hiScore = PlayerPrefs.GetInt(_saveHiScore);
+            HiScore = PlayerPrefs.GetInt(_saveHiScore);
 
         if (PlayerPrefs.HasKey(_saveTotalScore))  
-            _totalScore = PlayerPrefs.GetInt(_saveTotalScore);
+            TotalScore = PlayerPrefs.GetInt(_saveTotalScore);
     }
 
     public void AddScore(int score)
     {
-        _currenScore = score;
+        CurrenScore = score;
 
-        if (_currenScore > _hiScore)
+        if (CurrenScore > HiScore)
         {
-            _hiScore = _currenScore;
+            HiScore = CurrenScore;
 
             SaveHiScore();
 
@@ -59,23 +61,30 @@ public class PlayerScore : MonoBehaviour
         ScoreChanged?.Invoke();
     }
 
+    public void SubtractTotalScore(int purchase)
+    {
+        TotalScore -= purchase;
+
+        TotalScoreChanged?.Invoke();
+    }
+
     private void AddTotalScore()
     {
-        _totalScore += _currenScore;
-        PlayerPrefs.SetInt(_saveTotalScore, _totalScore); 
+        TotalScore += CurrenScore;
+        PlayerPrefs.SetInt(_saveTotalScore, TotalScore); 
         PlayerPrefs.Save();
     }
 
     private void SaveHiScore()
     {
-        PlayerPrefs.SetInt(_saveHiScore, _hiScore); 
+        PlayerPrefs.SetInt(_saveHiScore, HiScore); 
         PlayerPrefs.Save();
     }
 
       private void ResetHiScore()
     {
-        _hiScore = 0;
-        _totalScore = 0;
+        HiScore = 0;
+        TotalScore = 0;
         PlayerPrefs.DeleteKey(_saveHiScore);
         PlayerPrefs.DeleteKey(_saveTotalScore);
 
@@ -83,4 +92,6 @@ public class PlayerScore : MonoBehaviour
 
         ScoreChanged?.Invoke();
     }
+
+
 }

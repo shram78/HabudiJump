@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class ItemInStore : MonoBehaviour
+public abstract class Boost : MonoBehaviour
 {
     [SerializeField] private string _label;
     [SerializeField] private int _price;
@@ -16,4 +16,6 @@ public abstract class ItemInStore : MonoBehaviour
     {
         _isBued = true;
     }
+
+    public abstract int GetPower();
 }

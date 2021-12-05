@@ -13,8 +13,8 @@ public class ViewScoreInGame : MonoBehaviour
 
     private void Start()
     {
-        _scoreInGame.text = _playerScore._currenScore.ToString();
-        _totalScore.text = _playerScore._totalScore.ToString();
+        _scoreInGame.text = _playerScore.CurrenScore.ToString();
+        _totalScore.text = _playerScore.TotalScore.ToString();
     }
 
     private void OnEnable()
@@ -22,6 +22,8 @@ public class ViewScoreInGame : MonoBehaviour
         _player.GameOver += OnShowPoints;
 
         _playerScore.ScoreChanged += OnScoreChanged;
+
+        _playerScore.TotalScoreChanged += OnScoreChanged;
     }
 
     private void OnDisable()
@@ -29,18 +31,23 @@ public class ViewScoreInGame : MonoBehaviour
         _player.GameOver -= OnShowPoints;
 
         _playerScore.ScoreChanged -= OnScoreChanged;
+
+        _playerScore.TotalScoreChanged -= OnScoreChanged;
+
     }
 
     private void OnScoreChanged()
     {
-        _scoreInGame.text = _playerScore._currenScore.ToString();
+        _scoreInGame.text = _playerScore.CurrenScore.ToString();
 
-        _hiScore.text = _playerScore._hiScore.ToString();
+        _hiScore.text = _playerScore.HiScore.ToString();
+
+        _totalScore.text = _playerScore.TotalScore.ToString();
     }
 
     private void OnShowPoints()
     {
-        _scoreInFinish.text = _playerScore._currenScore.ToString();
-        _hiScore.text = _playerScore._hiScore.ToString();
+        _scoreInFinish.text = _playerScore.CurrenScore.ToString();
+        _hiScore.text = _playerScore.HiScore.ToString();
     }
 }

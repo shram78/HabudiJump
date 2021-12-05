@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2559584044959835146}
-  - component: {fileID: 6977454649272420981}
+  - component: {fileID: 2717420306924037582}
   m_Layer: 0
-  m_Name: ItemOne
+  m_Name: LowSpeedBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6977454649272420981
+--- !u!114 &2717420306924037582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,10 +40,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5530448690517644587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94083db0c72e3c8498762300a261b007, type: 3}
+  m_Script: {fileID: 11500000, guid: c8724f029e64a0d4783dc2c95c54a1d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _label: BayHabudy
+  _label: Low Boost
   _price: 1
-  _icon: {fileID: 21300000, guid: 071455b1f1e1c70458ee59c4fdc818fe, type: 3}
-  _isBued: 0
+  _icon: {fileID: 21300000, guid: 02c24567b5ab0e74e94d2ee5cc702224, type: 3}
+  _isBued: 1

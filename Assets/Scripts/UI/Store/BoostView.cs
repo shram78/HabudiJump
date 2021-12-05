@@ -3,21 +3,21 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class ItemInStoreView : MonoBehaviour
+public class BoostView : MonoBehaviour
 {
     [SerializeField] private TMP_Text _label;
     [SerializeField] private TMP_Text _price;
     [SerializeField] private Image _icon;
     [SerializeField] private Button _sellButton;
 
-    private ItemInStore _itemInStore;
+    private Boost _boost;
 
-    public event UnityAction<ItemInStore, ItemInStoreView> SellButtonClick;
+    public event UnityAction<Boost, BoostView> SellButtonClick;
 
     private void OnEnable()
     {
         _sellButton.onClick.AddListener(OnButtonClick);
-         _sellButton.onClick.AddListener(TryLockItem);
+        _sellButton.onClick.AddListener(TryLockItem);
     }
 
     private void OnDisable()
@@ -28,20 +28,20 @@ public class ItemInStoreView : MonoBehaviour
 
     private void TryLockItem()
     {
-        if (_itemInStore.IsBued)
+        if (_boost.IsBued)
             _sellButton.interactable = false;
     }
 
-    public void Render(ItemInStore itemInStore)
+    public void Render(Boost boost)
     {
-        _itemInStore = itemInStore;
-        _label.text = itemInStore.Label;
-        _price.text = itemInStore.Price.ToString();
-        _icon.sprite = itemInStore.Icon;
+        _boost = boost;
+        _label.text = boost.Label;
+        _price.text = boost.Price.ToString();
+        _icon.sprite = boost.Icon;
     }
 
     private void OnButtonClick()
     {
-         SellButtonClick?.Invoke(_itemInStore, this);
+        SellButtonClick?.Invoke(_boost, this);
     }
 }

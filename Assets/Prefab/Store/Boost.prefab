@@ -93,13 +93,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.05
+  m_fontSize: 29.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -404,9 +404,9 @@ GameObject:
   - component: {fileID: 8592740362096857878}
   - component: {fileID: 8592740362096857876}
   - component: {fileID: 8592740362096857879}
-  - component: {fileID: -7401302147917960352}
+  - component: {fileID: 3988782086749049514}
   m_Layer: 5
-  m_Name: ItemInStore
+  m_Name: Boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-7401302147917960352
+--- !u!114 &3988782086749049514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8592740362096857881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 817599df1d8ff45488ed102f8c97069e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7783da2cf13d4114bb5adf4400a9731f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _label: {fileID: 6368724212782123021}

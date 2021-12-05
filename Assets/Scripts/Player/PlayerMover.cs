@@ -15,13 +15,13 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private PlayerScore _playerScore;
     [SerializeField] private AudioSource _jumpSound;
     [SerializeField] private Player _player;
+    [SerializeField] ParticleSystem _playerDie;
 
     private Rigidbody2D _rigidbody2D;
     private bool _isGrounded;
     private int _traveledDistance;
     private Animator _animator;
     private const string _isJumping = "IsJumping";
-    private const string _isDie = "IsDie";
 
     private void OnEnable()
     {
@@ -39,33 +39,29 @@ public class PlayerMover : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-    }
-
-
     private void FixedUpdate()
     {
         _isGrounded = Physics2D.OverlapCircle(_groundChecker.position, 0.1f, _groundLayer);
 
-        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            _animator.SetBool(_isJumping, true);
-            Move();
-        }
+            if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+            {
+                _animator.SetBool(_isJumping, true);
+                Move();
+            }
 
-        else
-        {
-            _animator.SetBool(_isJumping, false);
-        }
+            else
+            {
+                _animator.SetBool(_isJumping, false);
+            }
 
-        if (_isGrounded)
-        {
-            Jump();
+            if (_isGrounded)
+            {
+                Jump();
 
-            AddScoreForDistanse();
+                AddScoreForDistanse();
+            }
         }
     }
 
@@ -91,7 +87,9 @@ public class PlayerMover : MonoBehaviour
 
     private void OnPlayerDie()
     {
-        _rigidbody2D.AddForce(new Vector2(10, 10), ForceMode2D.Impulse);
-        _animator.SetBool(_isDie, true);
+        _rigidbody2D.AddForce(new Vector2(5, 10), ForceMode2D.Impulse);
+        _playerDie.Play();
     }
+
+
 }

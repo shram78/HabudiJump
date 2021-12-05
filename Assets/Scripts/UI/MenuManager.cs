@@ -1,7 +1,7 @@
 using UnityEngine;
 using IJunior.TypedScenes;
-using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
@@ -19,8 +19,18 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button _backMainMenuButton;
     [SerializeField] private Button _exitMainMenuButton;
     [SerializeField] private Button _restartButton;
+    [SerializeField] private Button _nextBoostButton;
+    [SerializeField] private Button _useCurrentBoostButton;
 
     private bool _isSetNewHiScore = false;
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Q) || Input.GetMouseButton(1))
+        {
+            OnUseBoostButtonClick();
+        }
+    }
 
     private void OnEnable()
     {
@@ -29,8 +39,12 @@ public class MenuManager : MonoBehaviour
         _backMainMenuButton.onClick.AddListener(OnBackMainMenuButton);
         _exitMainMenuButton.onClick.AddListener(OnBackMainMenuButton);
         _restartButton.onClick.AddListener(OnRestartButtonClick);
+        _nextBoostButton.onClick.AddListener(OnNextBoostButtonClick);
+        _useCurrentBoostButton.onClick.AddListener(OnUseBoostButtonClick);
+
         _player.GameOver += OnPlayerDie;
         _playerScore.NewHiScore += OnPlayerNewHiScore;
+        _player.CurrentBoostChanged += ShowNexBoostButton;
     }
 
     private void OnDisable()
@@ -40,8 +54,17 @@ public class MenuManager : MonoBehaviour
         _backMainMenuButton.onClick.RemoveListener(OnBackMainMenuButton);
         _exitMainMenuButton.onClick.RemoveListener(OnBackMainMenuButton);
         _restartButton.onClick.RemoveListener(OnRestartButtonClick);
+        _nextBoostButton.onClick.RemoveListener(OnNextBoostButtonClick);
+        _useCurrentBoostButton.onClick.RemoveListener(OnUseBoostButtonClick);
+
         _player.GameOver -= OnPlayerDie;
         _playerScore.NewHiScore -= OnPlayerNewHiScore;
+        _player.CurrentBoostChanged -= ShowNexBoostButton;
+    }
+
+    private void OnUseBoostButtonClick()
+    {
+        _player.UseCurrentBoost();
     }
 
     private void OnBackMainMenuButton()
@@ -85,5 +108,19 @@ public class MenuManager : MonoBehaviour
         _newHiScore.gameObject.SetActive(true);
 
         _isSetNewHiScore = true;
+    }
+
+    private void OnNextBoostButtonClick()
+    {
+        _player.NextBoost();
+    }
+
+    public void ShowNexBoostButton()
+    {
+        if (_player.GetBoostCount() <= 1)
+            _nextBoostButton.gameObject.SetActive(false);
+
+        else
+            _nextBoostButton.gameObject.SetActive(true);
     }
 }

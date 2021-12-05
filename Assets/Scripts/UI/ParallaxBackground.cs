@@ -28,8 +28,6 @@ public class ParallaxBackground : MonoBehaviour
         _lastCameraPosition = _cameraTransform.position;
 
         if (_cameraTransform.position.x - transform.position.x >= _textureUnitSizeX)
-        {
             transform.position = new Vector3(_cameraTransform.position.x, transform.position.y);
-        }
     }
 }

@@ -3,38 +3,41 @@ using UnityEngine;
 
 public class Store : MonoBehaviour
 {
-    [SerializeField] private List<ItemInStore> _itemInStore;
+    [SerializeField] private List<Boost> _boosts;
     [SerializeField] private Player _player;
-    [SerializeField] private ItemInStoreView _template;
+
+    [SerializeField] private PlayerScore _playerScore;
+
+    [SerializeField] private BoostView _template;
     [SerializeField] private GameObject _itemContainer;
 
     private void Start()
     {
-        for (int i = 0; i < _itemInStore.Count; i++)
+        for (int i = 0; i < _boosts.Count; i++)
         {
-            AddItem(_itemInStore[i]);
+            AddItem(_boosts[i]);
         }
     }
 
-    private void AddItem(ItemInStore itemInStore)
+    private void AddItem(Boost boost)
     {
         var view = Instantiate(_template, _itemContainer.transform);
         view.SellButtonClick += OnSellButtonClick;
-        view.Render(itemInStore);
+        view.Render(boost);
     }
 
-    private void OnSellButtonClick(ItemInStore itemInStore, ItemInStoreView itemInStoreView)
+    private void OnSellButtonClick(Boost boost, BoostView boostView)
     {
-        TrySellItemInStore(itemInStore, itemInStoreView);
+        TrySellBoost(boost, boostView);
     }
 
-    private void TrySellItemInStore(ItemInStore itemInStore, ItemInStoreView itemInStoreView)
+    private void TrySellBoost(Boost boost, BoostView boostView)
     {
-        if (itemInStore.Price <= _player.Score) // очки нужны не у плеера
+        if (boost.Price <= _playerScore.TotalScore)
         {
-           // _player.BuyItemInStore(itemInStore);
-            itemInStore.Buy();
-            itemInStoreView.SellButtonClick -= OnSellButtonClick;
+            _player.BuyBoost(boost);
+            boost.Buy();
+            boostView.SellButtonClick -= OnSellButtonClick;
         }
     }
 }
