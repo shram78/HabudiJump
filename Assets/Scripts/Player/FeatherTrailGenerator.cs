@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FeatherTrailGenerator : MonoBehaviour
 {
-    [SerializeField] ParticleSystem _particleSystem;
+    [SerializeField] private ParticleSystem _particleSystem;
 
     private void Update()
     {

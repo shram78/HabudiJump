@@ -15,13 +15,13 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private PlayerScore _playerScore;
     [SerializeField] private AudioSource _jumpSound;
     [SerializeField] private Player _player;
-    [SerializeField] ParticleSystem _playerDie;
+    [SerializeField] private ParticleSystem _playerDie;
 
     private Rigidbody2D _rigidbody2D;
     private bool _isGrounded;
     private int _traveledDistance;
     private Animator _animator;
-    private const string _isJumping = "IsJumping";
+    private const string IsJumping = "IsJumping";
 
     private void OnEnable()
     {
@@ -39,7 +39,7 @@ public class PlayerMover : MonoBehaviour
     {
         _isGrounded = Physics2D.OverlapCircle(_groundChecker.position, 0.1f, _groundLayer);
 
-        _animator.SetBool(_isJumping, false);
+        _animator.SetBool(IsJumping, false);
 
         if (!EventSystem.current.IsPointerOverGameObject())
         {
@@ -58,7 +58,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Move()
     {
-        _animator.SetBool(_isJumping, true);
+        _animator.SetBool(IsJumping, true);
 
         transform.Translate(Vector2.right * _speed * Time.deltaTime);
 
@@ -77,7 +77,7 @@ public class PlayerMover : MonoBehaviour
     private void AddScoreForDistanse()
     {
         _traveledDistance = (int)transform.position.x;
-        _playerScore.AddScore(_traveledDistance);
+        _playerScore.Add(_traveledDistance);
     }
 
     private void OnPlayerDie()
