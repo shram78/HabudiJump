@@ -23,7 +23,7 @@ public class Spawner : ObjectsPool
         {
             if (TryGetObject(out GameObject obstacles))
             {
-                GetSizeObstacles(obstacles);
+                GetSize(obstacles);
 
                 transform.position = new Vector3(transform.position.x + (_previousObstacleWidth / 2 + _currentObstacleWidth / 2) + _distanceBetweenObstacles, transform.position.y, transform.position.z);
 
@@ -34,7 +34,7 @@ public class Spawner : ObjectsPool
         }
     }
 
-    private void GetSizeObstacles(GameObject obstacles)
+    private void GetSize(GameObject obstacles)
     {
         _previousObstacleWidth = _previousObstacle.transform.localScale.x;
         _currentObstacleWidth = obstacles.transform.localScale.x;

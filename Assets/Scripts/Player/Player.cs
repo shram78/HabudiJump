@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public event UnityAction<Boost> BoostChanged;
     public event UnityAction NoNextBoost;
 
+    public int BoostCount => _boosts.Count;
+
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -31,14 +33,14 @@ public class Player : MonoBehaviour
     public void Die()
     {
         BeforeDie?.Invoke();
-        StartCoroutine(DelayDie());
+        StartCoroutine(Death());
     }
 
     public void BuyBoost(Boost boost)
     {
         _buySound.Play();
 
-        _playerScore.SubtractTotalScore(boost.Price);
+        _playerScore.SubtractTotal(boost.Price);
 
         _boosts.Add(boost);
 
@@ -83,10 +85,7 @@ public class Player : MonoBehaviour
 
         NoNextBoost?.Invoke();
     }
-    public int GetBoostCount()
-    {
-        return _boosts.Count;
-    }
+   
 
     private void ChangeBoost(Boost boost)
     {
@@ -94,12 +93,11 @@ public class Player : MonoBehaviour
         BoostChanged?.Invoke(_currentBoost);
     }
 
-    private IEnumerator DelayDie()
+    private IEnumerator Death()
     {
         _dieSound.Play();
 
-        while (_dieSound.isPlaying)
-            yield return null;
+        yield return new WaitWhile(() =>_dieSound.isPlaying);
 
         GameOver?.Invoke();
 

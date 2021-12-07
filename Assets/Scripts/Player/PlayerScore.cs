@@ -7,8 +7,8 @@ public class PlayerScore : MonoBehaviour
     [SerializeField] private Button _resetHiScoreButton;
     [SerializeField] private Player _player;
 
-    private const string _saveHiScore = "HiScore";
-    private const string _saveTotalScore = "TotalScore";
+    private const string SaveHiScore = "HiScore";
+    private const string SaveTotalScore = "TotalScore";
 
     public int HiScore { get; private set; }
 
@@ -22,28 +22,28 @@ public class PlayerScore : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.HasKey(_saveHiScore))
-            HiScore = PlayerPrefs.GetInt(_saveHiScore);
+        if (PlayerPrefs.HasKey(SaveHiScore))
+            HiScore = PlayerPrefs.GetInt(SaveHiScore);
 
-        if (PlayerPrefs.HasKey(_saveTotalScore))
-            TotalScore = PlayerPrefs.GetInt(_saveTotalScore);
+        if (PlayerPrefs.HasKey(SaveTotalScore))
+            TotalScore = PlayerPrefs.GetInt(SaveTotalScore);
     }
 
     private void OnEnable()
     {
-        _resetHiScoreButton.onClick.AddListener(ResetHiScore);
+        _resetHiScoreButton.onClick.AddListener(ResetHiTotal);
 
-        _player.GameOver += AddTotalScore;
+        _player.GameOver += AddTotal;
     }
 
     private void OnDisable()
     {
-        _resetHiScoreButton.onClick.RemoveListener(ResetHiScore);
+        _resetHiScoreButton.onClick.RemoveListener(ResetHiTotal);
 
-        _player.GameOver -= AddTotalScore;
+        _player.GameOver -= AddTotal;
     }
 
-    public void AddScore(int score)
+    public void Add(int score)
     {
         CurrenScore = score;
 
@@ -51,7 +51,7 @@ public class PlayerScore : MonoBehaviour
         {
             HiScore = CurrenScore;
 
-            SaveHiScore();
+            SaveInFile();
 
             NewHiScore?.Invoke();
         }
@@ -59,32 +59,32 @@ public class PlayerScore : MonoBehaviour
         ScoreChanged?.Invoke();
     }
 
-    public void SubtractTotalScore(int purchase)
+    public void SubtractTotal(int purchase)
     {
         TotalScore -= purchase;
 
         TotalScoreChanged?.Invoke();
     }
 
-    private void AddTotalScore()
+    private void AddTotal()
     {
         TotalScore += CurrenScore;
-        PlayerPrefs.SetInt(_saveTotalScore, TotalScore); 
+        PlayerPrefs.SetInt(SaveTotalScore, TotalScore); 
         PlayerPrefs.Save();
     }
 
-    private void SaveHiScore()
+    private void SaveInFile()
     {
-        PlayerPrefs.SetInt(_saveHiScore, HiScore); 
+        PlayerPrefs.SetInt(SaveHiScore, HiScore); 
         PlayerPrefs.Save();
     }
 
-      private void ResetHiScore()
+      private void ResetHiTotal()
     {
         HiScore = 0;
         TotalScore = 0;
-        PlayerPrefs.DeleteKey(_saveHiScore);
-        PlayerPrefs.DeleteKey(_saveTotalScore);
+        PlayerPrefs.DeleteKey(SaveHiScore);
+        PlayerPrefs.DeleteKey(SaveTotalScore);
 
         PlayerPrefs.Save();
 

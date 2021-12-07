@@ -115,8 +115,9 @@ public class MenuManager : MonoBehaviour
 
     private void ShowNexBoostButton()
     {
-        if (_player.GetBoostCount() <= 1)
-            _nextBoostButton.gameObject.SetActive(false);
+        if (_player.BoostCount <= 1)
+
+        _nextBoostButton.gameObject.SetActive(false);
 
         else
             _nextBoostButton.gameObject.SetActive(true);
