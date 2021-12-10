@@ -4,41 +4,41 @@ using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
-    [SerializeField] private Button _resetHiScoreButton;
+    [SerializeField] private Button _resetHighScoreButton;
     [SerializeField] private Player _player;
 
-    private const string SaveHiScore = "HiScore";
-    private const string SaveTotalScore = "TotalScore";
+    private const string HighScorePrefs = "HighScore";
+    private const string TotalScorePrefs = "TotalScore";
 
-    public int HiScore { get; private set; }
+    public int HighScore { get; private set; }
 
     public int CurrenScore { get; private set; }
 
     public int TotalScore { get; private set; }
 
-    public event UnityAction ScoreChanged;
-    public event UnityAction TotalScoreChanged;
-    public event UnityAction NewHiScore;
+    public event UnityAction CurrentChanged;
+    public event UnityAction TotalChanged;
+    public event UnityAction NewHigh;
 
     private void Awake()
     {
-        if (PlayerPrefs.HasKey(SaveHiScore))
-            HiScore = PlayerPrefs.GetInt(SaveHiScore);
+        if (PlayerPrefs.HasKey(HighScorePrefs))
+            HighScore = PlayerPrefs.GetInt(HighScorePrefs);
 
-        if (PlayerPrefs.HasKey(SaveTotalScore))
-            TotalScore = PlayerPrefs.GetInt(SaveTotalScore);
+        if (PlayerPrefs.HasKey(TotalScorePrefs))
+            TotalScore = PlayerPrefs.GetInt(TotalScorePrefs);
     }
 
     private void OnEnable()
     {
-        _resetHiScoreButton.onClick.AddListener(ResetHiTotal);
+        _resetHighScoreButton.onClick.AddListener(ResetHighTotal);
 
         _player.GameOver += AddTotal;
     }
 
     private void OnDisable()
     {
-        _resetHiScoreButton.onClick.RemoveListener(ResetHiTotal);
+        _resetHighScoreButton.onClick.RemoveListener(ResetHighTotal);
 
         _player.GameOver -= AddTotal;
     }
@@ -47,47 +47,47 @@ public class PlayerScore : MonoBehaviour
     {
         CurrenScore = score;
 
-        if (CurrenScore > HiScore)
+        if (CurrenScore > HighScore)
         {
-            HiScore = CurrenScore;
+            HighScore = CurrenScore;
 
             SaveInFile();
 
-            NewHiScore?.Invoke();
+            NewHigh?.Invoke();
         }
 
-        ScoreChanged?.Invoke();
+        CurrentChanged?.Invoke();
     }
 
     public void SubtractTotal(int purchase)
     {
         TotalScore -= purchase;
 
-        TotalScoreChanged?.Invoke();
+        TotalChanged?.Invoke();
     }
 
     private void AddTotal()
     {
         TotalScore += CurrenScore;
-        PlayerPrefs.SetInt(SaveTotalScore, TotalScore); 
+        PlayerPrefs.SetInt(TotalScorePrefs, TotalScore); 
         PlayerPrefs.Save();
     }
 
     private void SaveInFile()
     {
-        PlayerPrefs.SetInt(SaveHiScore, HiScore); 
+        PlayerPrefs.SetInt(HighScorePrefs, HighScore); 
         PlayerPrefs.Save();
     }
 
-      private void ResetHiTotal()
+      private void ResetHighTotal()
     {
-        HiScore = 0;
+        HighScore = 0;
         TotalScore = 0;
-        PlayerPrefs.DeleteKey(SaveHiScore);
-        PlayerPrefs.DeleteKey(SaveTotalScore);
+        PlayerPrefs.DeleteKey(HighScorePrefs);
+        PlayerPrefs.DeleteKey(TotalScorePrefs);
 
         PlayerPrefs.Save();
 
-        ScoreChanged?.Invoke();
+        CurrentChanged?.Invoke();
     }
 }

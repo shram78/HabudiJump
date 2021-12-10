@@ -7,10 +7,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private PlayerScore _playerScore;
     [SerializeField] private AudioSource _buttonClickSound;
-    [SerializeField] private AudioSource _newHiScoreSound;
+    [SerializeField] private AudioSource _newHighScoreSound;
     [SerializeField] private GameObject _restartScreen;
     [SerializeField] private GameObject _StoreScreen;
-    [SerializeField] private Image _newHiScore;
+    [SerializeField] private Image _newHighScore;
     [SerializeField] private Button _openStoreButton;
     [SerializeField] private Button _closeStoreButton;
     [SerializeField] private Button _backMainMenuButton;
@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button _nextBoostButton;
     [SerializeField] private Button _useCurrentBoostButton;
 
-    private bool _isSetNewHiScore = false;
+    private bool _isSetNewHighScore = false;
 
     private void OnEnable()
     {
@@ -32,7 +32,7 @@ public class MenuManager : MonoBehaviour
         _useCurrentBoostButton.onClick.AddListener(OnUseBoostButtonClick);
 
         _player.GameOver += OnPlayerDie;
-        _playerScore.NewHiScore += OnPlayerNewHiScore;
+        _playerScore.NewHigh += OnPlayerNewHiScore;
         _player.NoNextBoost += ShowNexBoostButton;
     }
 
@@ -53,7 +53,7 @@ public class MenuManager : MonoBehaviour
         _useCurrentBoostButton.onClick.RemoveListener(OnUseBoostButtonClick);
 
         _player.GameOver -= OnPlayerDie;
-        _playerScore.NewHiScore -= OnPlayerNewHiScore;
+        _playerScore.NewHigh -= OnPlayerNewHiScore;
         _player.NoNextBoost -= ShowNexBoostButton;
     }
 
@@ -97,15 +97,15 @@ public class MenuManager : MonoBehaviour
     {
         _restartScreen.SetActive(true);
 
-        if (_isSetNewHiScore)
-            _newHiScoreSound.Play();
+        if (_isSetNewHighScore)
+            _newHighScoreSound.Play();
     }
 
     private void OnPlayerNewHiScore()
     {
-        _newHiScore.gameObject.SetActive(true);
+        _newHighScore.gameObject.SetActive(true);
 
-        _isSetNewHiScore = true;
+        _isSetNewHighScore = true;
     }
 
     private void OnNextBoostButtonClick()
