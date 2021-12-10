@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private Boost _currentBoost;
     private int _currentBoostNumber;
     private Rigidbody2D _rigidbody2D;
+
     public event UnityAction BeforeDie;
     public event UnityAction GameOver;
     public event UnityAction<Boost> BoostChanged;

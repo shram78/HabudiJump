@@ -6,7 +6,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out KillZone killZone))
+        if (collision.gameObject.TryGetComponent(out PlayerKillZone killZone))
             _player.Die();
     }
 }
