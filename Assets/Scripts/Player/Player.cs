@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
         else
         {
             _useBoostSound.Play();
-            int powerCurrentBoost = _currentBoost.GetPower();
+            int powerCurrentBoost = _currentBoost.Power;
             _rigidbody2D.AddForce(new Vector2(0, powerCurrentBoost), ForceMode2D.Force);
 
             _boosts.Remove(_currentBoost);
