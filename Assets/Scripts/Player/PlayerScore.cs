@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(ScoreSaver))]
+
 public class PlayerScore : MonoBehaviour
 {
     [SerializeField] private Button _resetHighScoreButton;
     [SerializeField] private Player _player;
 
-    private const string HighScorePrefs = "HighScore";
-    private const string TotalScorePrefs = "TotalScore";
+    private ScoreSaver _scoreSaver;
 
     public int HighScore { get; private set; }
 
@@ -20,20 +21,19 @@ public class PlayerScore : MonoBehaviour
     public event UnityAction TotalChanged;
     public event UnityAction NewHigh;
 
-    private void Awake()
-    {
-        if (PlayerPrefs.HasKey(HighScorePrefs))
-            HighScore = PlayerPrefs.GetInt(HighScorePrefs);
-
-        if (PlayerPrefs.HasKey(TotalScorePrefs))
-            TotalScore = PlayerPrefs.GetInt(TotalScorePrefs);
-    }
-
     private void OnEnable()
     {
         _resetHighScoreButton.onClick.AddListener(ResetHighTotal);
 
         _player.GameOver += AddTotal;
+    }
+
+    private void Start()
+    {
+        _scoreSaver = GetComponent<ScoreSaver>();
+
+        TotalScore = _scoreSaver.Total;
+        HighScore = _scoreSaver.High;
     }
 
     private void OnDisable()
@@ -51,7 +51,7 @@ public class PlayerScore : MonoBehaviour
         {
             HighScore = CurrenScore;
 
-            SaveInFile();
+            _scoreSaver.SaveHigh(HighScore);
 
             NewHigh?.Invoke();
         }
@@ -69,24 +69,16 @@ public class PlayerScore : MonoBehaviour
     private void AddTotal()
     {
         TotalScore += CurrenScore;
-        PlayerPrefs.SetInt(TotalScorePrefs, TotalScore); 
-        PlayerPrefs.Save();
+
+        _scoreSaver.SaveTotal(TotalScore);
     }
 
-    private void SaveInFile()
-    {
-        PlayerPrefs.SetInt(HighScorePrefs, HighScore); 
-        PlayerPrefs.Save();
-    }
-
-      private void ResetHighTotal()
+    private void ResetHighTotal()
     {
         HighScore = 0;
         TotalScore = 0;
-        PlayerPrefs.DeleteKey(HighScorePrefs);
-        PlayerPrefs.DeleteKey(TotalScorePrefs);
 
-        PlayerPrefs.Save();
+        _scoreSaver.ResetHighTotal();
 
         CurrentChanged?.Invoke();
     }

@@ -1632,7 +1632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 2147057715}
-  _cameraSpeed: 0
+  _cameraSpeed: 3
   _cameraSmooth: 3
 --- !u!20 &519420031
 Camera:
@@ -13947,6 +13947,7 @@ GameObject:
   - component: {fileID: 1421557189}
   - component: {fileID: 1421557190}
   - component: {fileID: 1421557191}
+  - component: {fileID: 1421557192}
   m_Layer: 5
   m_Name: PlayerScore
   m_TagString: Untagged
@@ -14006,6 +14007,18 @@ MonoBehaviour:
   _totalScore: {fileID: 2090827481}
   _playerScore: {fileID: 1421557190}
   _player: {fileID: 2147057715}
+--- !u!114 &1421557192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421557188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3833da987fde3349937c547078603af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1514276637
 GameObject:
   m_ObjectHideFlags: 0
